@@ -20,7 +20,7 @@ client.on('guildMemberAdd', member => {
 
 client.on('message', message => {
   const { username } = message.author;
-  if (message.author.username !== 'Welcome' && users[username]) {
+  if (message.author.username !== 'Welcome' && !users[username]) {
     if (message.content === 'yes') {
       users[username] = { ...users };
       users[username]['step'] = 'name';
