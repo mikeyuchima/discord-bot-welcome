@@ -12,7 +12,6 @@ client.once('ready', () => {
 });
 
 client.on('guildMemberAdd', member => {
-  console.log(member);
   member.user.send(
     `Introduce yourself to us. Say **yes** to get started! :heart:`
   );
@@ -38,6 +37,7 @@ client.on('message', message => {
         `Post your social media tags, in game names and games you play. *Be careful by pressing enter you will send your response*`
       );
     } else if (users[username] && users[username].step === 'social') {
+      users[username]['step'] = false;
       users[username]['social'] = message.content;
       sendEmbed(message.author, users[username]);
       message.author.send(
