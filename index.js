@@ -12,14 +12,14 @@ client.once('ready', () => {
 
 client.on('guildMemberAdd', member => {
   member.user.send(
-    `Introduce yourself to us. Say **yes** to get started! :heart:`
+    `Introduce yourself to us. Say **~yes** to get started! :heart:`
   );
 });
 
 client.on('message', message => {
   const { username } = message.author;
   if (message.author.username !== 'Welcome') {
-    if (message.content === 'yes' && !users[username]) {
+    if (message.content === '~yes' && !users[username]) {
       users[username] = { ...users };
       users[username]['step'] = 'name';
       message.author.send(`What's your name?`);
